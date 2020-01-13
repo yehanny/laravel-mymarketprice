@@ -7,3 +7,12 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/* Custom styles */
+.navbar-right {
+    margin-right: 0 !important;
+}
+
+body {
+    padding-top: 0px !important;
+}

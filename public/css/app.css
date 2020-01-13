@@ -8333,3 +8333,13 @@ button.close {
   }
 }
 
+/* Custom styles */
+
+.navbar-right {
+  margin-right: 0 !important;
+}
+
+body {
+  padding-top: 0px !important;
+}
+
