@@ -8335,11 +8335,11 @@ button.close {
 
 /* Custom styles */
 
-.navbar-right {
-  margin-right: 0 !important;
+#admin-page {
+  padding-top: 0px !important;
 }
 
-body {
-  padding-top: 0px !important;
+.navbar-right {
+  margin-right: 0 !important;
 }
 
