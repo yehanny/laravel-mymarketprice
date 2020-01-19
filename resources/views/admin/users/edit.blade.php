@@ -5,10 +5,10 @@
 
     @include('includes.formerrors')
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     <img src="{{$user->photo ? $user->photo->file : '/images/noimage400x400.jpg'}}" class="img-fluid img-thumbnail ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
     </div>
-    <div class="col-md-9 pb-3">
+    <div class="col-md-8 pb-3">
 
         {!! Form::model($user, ['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user->id], 'files'=>true]) !!}
 

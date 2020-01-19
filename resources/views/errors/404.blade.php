@@ -1,5 +1,9 @@
-<h1>
-    404 Error
-</h1>
+@extends('layouts.app')
 
-<h2>Oops, looks like you are missing something in here, let's try somewhere else <i class="fas fa-smile-wink    "></i></h2>
+@section('content')
+    
+<h1 class="text-center">404 Error</h1>
+
+<h3 class="text-center">Oops, looks like you are missing something in here, let's try somewhere else <i class="fa fa-smile-wink"></i></h3>
+
+@endsection

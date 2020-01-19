@@ -3,7 +3,7 @@
 @section('content')
     <h1><i class="fa fa-user" aria-hidden="true"></i> Users</h1>
 
-    @include('includes.user_notification')
+    @include('includes.notification')
 
 <table class="table table-striped table-inverse table-responsive">
     <thead class="thead-inverse">

@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
     }
 
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
+
     /* Don't know what is this, it was playing around with atributes */
     // public function setPasswordAttribute()
     // {
@@ -58,5 +63,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 }

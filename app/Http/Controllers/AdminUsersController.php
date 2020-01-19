@@ -73,7 +73,7 @@ class AdminUsersController extends Controller
 
         $user = User::create($input);
 
-        Session::flash('created_user', 'The user ' . $user->name . ' (' . $user->email . ')' . ' has been created');
+        Session::flash('notification', 'The user "' . $user->name . ' (' . $user->email . ')' . '" has been created');
 
         return redirect('/admin/users');
     }
@@ -135,7 +135,7 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
-        Session::flash('updated_user', 'The user ' . $user->name . ' (' . $user->email . ')' . ' has been updated');
+        Session::flash('notification', 'The user "' . $user->name . ' (' . $user->email . ')' . '" has been updated');
 
         return redirect('/admin/users');
 
@@ -158,7 +158,7 @@ class AdminUsersController extends Controller
         
         $user->delete();
 
-        Session::flash('deleted_user', 'The user ' . $user->name . ' (' . $user->email . ')' . ' has been deleted');
+        Session::flash('notification', 'The user "' . $user->name . ' (' . $user->email . ')' . '" has been deleted');
 
         return redirect('/admin/users');
 
