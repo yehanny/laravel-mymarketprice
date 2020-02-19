@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\RolesEditRequest;
 use App\Role;
 
 class AdminRolesController extends Controller
@@ -15,7 +17,7 @@ class AdminRolesController extends Controller
     public function index()
     {
         //
-        $roles = Role::all();
+        $roles = Role::withCount('users')->get();
 
         return view('admin.roles.index', compact('roles'));
     }
@@ -36,9 +38,14 @@ class AdminRolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolesEditRequest $request)
     {
         //
+        $roles = Role::create($request->all());
+
+        Session::flash('notification', 'The role "' . $roles->name . '" has been created');
+
+        return redirect('/admin/roles');
     }
 
     /**
@@ -61,6 +68,10 @@ class AdminRolesController extends Controller
     public function edit($id)
     {
         //
+        $role = Role::findOrFail($id);
+
+        return view('admin.roles.edit', compact('role'));
+
     }
 
     /**
@@ -70,9 +81,18 @@ class AdminRolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RolesEditRequest $request, $id)
     {
         //
+        $input = $request->all();
+
+        $role = Role::findOrFail($id);
+
+        $role->update($input);
+
+        Session::flash('notification', 'The role "' . $role->name . '" has been updated');
+
+        return redirect('/admin/roles');
     }
 
     /**
@@ -84,5 +104,13 @@ class AdminRolesController extends Controller
     public function destroy($id)
     {
         //
+        $role = Role::findOrFail($id);
+
+        Session::flash('notification', 'The role "' . $role->name . '" has been updated');
+
+        $role->delete();
+
+        return redirect('/admin/roles');
+
     }
 }

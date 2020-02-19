@@ -21,8 +21,10 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        /* Search all posts and add it to view usin second parameter with the function compact() Nice! */
-        $posts = Post::all();
+        /* Search all posts and add it to view using second parameter with the function compact() Nice! */
+        $user = Auth::user();
+
+        $posts = Post::whereUserId($user->id)->get();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -105,7 +107,6 @@ class AdminPostsController extends Controller
      */
     public function update(PostsEditRequest $request, $id)
     {
-        
         $input = $request->all();
 
         if ($file = $request->file('photo_id')) {
@@ -144,5 +145,14 @@ class AdminPostsController extends Controller
         Session::flash('notification', 'The post "' . $post->title . '" has been deleted');
 
         return redirect('/admin/posts');
+    }
+
+    public function post($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+        return view('post', compact('post', 'comments'));
     }
 }

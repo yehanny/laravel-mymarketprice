@@ -14,6 +14,7 @@
             <th>Email</th>
             <th>Role</th>
             <th>Status</th>
+            <th>Posts</th>
             <th>Created</th>
             <th>Updated</th>
         </tr>
@@ -30,6 +31,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->role->name}}</td>
                 <td>{{$user->is_active == 1 ? 'Active' : 'Inactive'}}</td>
+                <td>{{$user->posts->count()}}</td>
                 <td>{{$user->created_at->diffForHumans()}}</td>
                 <td>{{$user->updated_at->diffForHumans()}}</td>
             </tr>

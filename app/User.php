@@ -32,11 +32,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role()
-    {
-        return $this->belongsTo('App\Role');
-    }
-
     public function photo()
     {
         return $this->belongsTo('App\Photo');
@@ -45,6 +40,11 @@ class User extends Authenticatable
     public function post()
     {
         return $this->belongsTo('App\Post');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 
     /* Don't know what is this, it was playing around with atributes */
@@ -65,9 +65,9 @@ class User extends Authenticatable
         return false;
     }
 
-    public function posts()
+    public function role()
     {
-        return $this->hasMany('App\Post');
+        return $this->belongsTo('App\Role');
     }
 
     public function roles()

@@ -21,7 +21,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        $users = User::all();
+        $users = User::withCount('posts')->get();
 
         return view('admin.users.index', compact('users'));
     }

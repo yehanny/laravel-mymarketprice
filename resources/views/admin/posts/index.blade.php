@@ -16,13 +16,12 @@
             <th>Category</th>
             <th>Created</th>
             <th>Updated</th>
+            <th>View</th>
         </tr>
         </thead>
         <tbody>
             @if ($posts)
-                
                 @foreach ($posts as $post)
-                        
                 <tr>
                     <td scope="row">{{$post->id}}</td>
                     <td><a href="{{route('posts.edit', $post->id)}}"><img src="{{$post->photo ? $post->photo->file : '/images/noimage80x80.jpg'}}" class='img-fluid img-thumbnail ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}' alt="" style="max-width: 80px" ></a></td>
@@ -32,10 +31,12 @@
                     <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
+                    <td>
+                        <a href="{{route('home.post', $post->id)}}">Post</a><br>
+                        <a href="{{route('comments.show', $post->id)}}">Comments</a>
+                    </td>
                 </tr>
-                
                 @endforeach
-            
             @endif
         </tbody>
 </table>
